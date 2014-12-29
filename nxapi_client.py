@@ -9,9 +9,9 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.poolmanager import PoolManager
 requests.packages.urllib3.disable_warnings() # disable non-verified SSL certificate warnings
 
-class NxAPIClient(object):
+class NXAPIClient(object):
     """
-    NxAPI client class to simplify use of Cisco's NX-API.  This class is ideal for passing
+    NX-API client class to simplify use of Cisco's NX-API.  This class is ideal for passing
     JSON objects between Cisco NXOS devices but can also be used with XML (although no parsing
     for xml is provided by this class, for xml use the xmltodict.py class here:
     https://github.com/datacenter/nexus9000/blob/master/nx-os/nxapi/utils/xmltodict.py)
@@ -23,7 +23,7 @@ class NxAPIClient(object):
 
     Example usage:
         # defaults to https with sslv3 (does not verify certificate)
-        nxapi = NxAPIClient(
+        nxapi = NXAPIClient(
             hostname="hostname_of_device",
             username="username",
             password="password"
@@ -406,7 +406,7 @@ if __name__ == "__main__":
     # overwrite requests logger to warning only
     logging.getLogger("requests").setLevel(logging.WARNING)
 
-    nxapi = NxAPIClient(hostname="clt-n9ka", username="varrow", password="ILoveVarrow!")
+    nxapi = NXAPIClient(hostname="clt-n9ka", username="varrow", password="ILoveVarrow!")
     print nxapi.cli_show("show version")
     print nxapi.cli_show_ascii("show system uptime")
     nxapi.logout()
